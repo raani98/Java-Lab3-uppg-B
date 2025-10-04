@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project implements Comparable<Project>, java.io.Serializable {
-    private final String title;
-    private final int id;
+    final String title;
+    final int id;
     private String description;
     private final LocalDate created;
     private int nextTaskId;
