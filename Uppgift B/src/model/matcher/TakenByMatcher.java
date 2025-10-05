@@ -1,4 +1,6 @@
-package model;
+package model.matcher;
+
+import model.Task;
 
 public class TakenByMatcher implements ITaskMatcher {
     private final String takenBy;
@@ -9,6 +11,6 @@ public class TakenByMatcher implements ITaskMatcher {
 
     @Override
     public boolean match(Task task) {
-        return task.takenBy != null && task.takenBy.equalsIgnoreCase(takenBy);
+        return task.getTakenBy() != null && task.getTakenBy().equalsIgnoreCase(takenBy);
     }
 }

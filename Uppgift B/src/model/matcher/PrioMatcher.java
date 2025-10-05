@@ -1,4 +1,7 @@
-package model;
+package model.matcher;
+
+import model.Task;
+import model.TaskPrio;
 
 public class PrioMatcher implements ITaskMatcher {
     private final TaskPrio prio;
@@ -9,6 +12,6 @@ public class PrioMatcher implements ITaskMatcher {
 
     @Override
     public boolean match(Task task) {
-        return task.prio == prio;
+        return task.getPrio() == prio;
     }
 }

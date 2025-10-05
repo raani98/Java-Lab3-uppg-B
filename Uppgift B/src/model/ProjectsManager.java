@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectManager {
+public class ProjectsManager {
     private int nextProjectId;
     private final List<Project> projects;
 
-    public ProjectManager()
+    public ProjectsManager()
     {
         this.projects = new ArrayList<>();
         this.nextProjectId = 1;
@@ -17,13 +17,17 @@ public class ProjectManager {
     {
         for(Project p : projects)
         {
-            if(p.title.equalsIgnoreCase(title))
+            if(p.getTitle().equalsIgnoreCase(title))
             {
                 return false;
             }
         }
         return true;
 
+    }
+
+    public List<Project> getProjects() {
+        return projects;
     }
 
     public boolean setProjects(List<Project> incomingProjects) {
@@ -44,8 +48,8 @@ public class ProjectManager {
         int highest = 0;
 
         for (Project p : projects) {
-            if (p.id > highest) {
-                highest = p.id;
+            if (p.getId() > highest) {
+                highest = p.getId();
             }
         }
 
@@ -58,7 +62,7 @@ public class ProjectManager {
 
     public Project getProjectById(int id) {
         for (Project p : projects) {
-            if (p.id == id) {
+            if (p.getId() == id) {
                 return p;
             }
         }
@@ -83,7 +87,7 @@ public class ProjectManager {
         List<Project> result = new ArrayList<>();
 
         for (Project p : projects) {
-            if (p.title.toLowerCase().contains(title.toLowerCase())) {
+            if (p.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 result.add(p);
             }
         }

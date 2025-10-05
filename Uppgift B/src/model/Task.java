@@ -1,24 +1,54 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
-public class Task implements Comparable<Task>  {
-    final int id;
-    String description;
-    TaskPrio prio;
-    TaskState state;
-    String takenBy;
-    LocalDate lastUpdated;
+public class Task implements Comparable<Task>, Serializable  {
+    private final int id;
+    private String description;
+    private TaskPrio prio;
+    private TaskState state;
+    private String takenBy;
+    private LocalDate lastUpdated;
 
-    public Task(int id, String description, TaskPrio prio)
+    public Task(int id, String descr, TaskPrio prio)
     {
         this.id = id;
-        this.description = description;
+        this.description = descr;
         this.prio = prio;
         this.state = TaskState.TO_DO;
         this.lastUpdated = LocalDate.now();
 
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public TaskPrio getPrio()
+    {
+        return prio;
+    }
+
+    public TaskState getState()
+    {
+        return state;
+    }
+
+    public LocalDate getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public String getTakenBy()
+    {
+        return takenBy;
     }
 
     public void setTakenBy(String takenBy)
@@ -59,13 +89,9 @@ public class Task implements Comparable<Task>  {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", prio=" + prio +
-                ", state=" + state +
-                ", takenBy='" + takenBy + '\'' +
-                ", lastUpdated=" + lastUpdated +
-                '}';
+        return String.format(
+                "  [Task ID: %d | Description: %s | Prio: %s | State: %s | Taken by: %s | Last updated: %s]",
+                id, description, prio, state, takenBy == null ? "-" : takenBy, lastUpdated
+        );
     }
 }
